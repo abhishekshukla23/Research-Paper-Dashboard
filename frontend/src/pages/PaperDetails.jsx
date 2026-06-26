@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import { getPapersById } from '../services/papersApi';
 import { setLogLevel } from 'firebase/app';
+import { useLocation } from 'react-router-dom';
 
   
 
@@ -11,6 +12,13 @@ const PaperDetails = ({savedPaps}) => {
 
     const {id}=useParams();
     
+
+ const location=useLocation();
+ const pape=location?.state?.paper
+
+if(!pape){
+     return <h2>Paper not found</h2>
+     }
 
 
 useEffect(()=>{

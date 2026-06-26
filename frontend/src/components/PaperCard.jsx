@@ -22,7 +22,7 @@ const PaperCard = (props) => {
       Save
   </button>
 </div>
- <Link to={`/details/${props.id}`}>
+ <Link to={`/details/${props.id}`} state={{ paper: props.paper }}>
  Read More
  </Link>
 

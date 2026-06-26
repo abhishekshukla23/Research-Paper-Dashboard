@@ -199,8 +199,14 @@ export async function getPapersById(id) {
 }
 
 
-export async function  getRealPapers() {
-    const response=await fetch( "https://api.semanticscholar.org/graph/v1/paper/search?query=artificial+intelligence&limit=10&fields=title,authors,year")
+export async function  getRealPapers(search = "artificial intelligence",start=0,limit=10) {
+    const response=await fetch(  `http://localhost:5000/papers?search=${encodeURIComponent(search)}&start=${start}&limit=${limit}`)
     const data=await response.json();
-    return data.data;
+    return data;
+}
+
+export async function  getSuggestions(search) {
+  const response=await fetch(  `http://localhost:5000/suggestions?search=${encodeURIComponent(search)}`)
+    return await response.json();
+   
 }
